@@ -6,11 +6,11 @@
   "type": "module",
   "scripts": {
     "clean": "rimraf dist/",
-    "copy-files": "mkdir dist && cp -r ./src .env package.json *.yaml tsconfig.json ./dist/",
-    "dev": "NODE_ENV=development ts-node src/index.ts",
+    "copy-files": "cp -r .env package.json *.yaml ./dist/",
+    "dev": "NODE_ENV=development node --loader ts-node/esm src/index.ts",
     "format": "prettier --write .",
-    "pack": "npm run clean && npm run copy-files",
-    "start": "NODE_ENV=production ts-node --loader ts-node/esm src/index.ts",
+    "pack": "npm run clean && tsc && npm run copy-files",
+    "start": "NODE_ENV=production node src/index.js",
     "test": "test",
     "typecheck": "tsc --noEmit"
   },
