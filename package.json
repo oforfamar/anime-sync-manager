@@ -5,7 +5,10 @@
   "main": "src/index.ts",
   "type": "module",
   "scripts": {
+    "clean": "rimraf dist/",
+    "copy-files": "mkdir dist && cp -r ./src .env package*.json *.yaml tsconfig.json ./dist/",
     "dev": "NODE_ENV=development ts-node src/index.ts",
+    "pack": "npm run clean && npm run copy-files",
     "start": "NODE_ENV=production ts-node src/index.ts",
     "test": "test"
   },
@@ -35,6 +38,7 @@
     "@types/node": "^20.12.7",
     "copyfiles": "^2.4.1",
     "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
     "ts-prune": "^0.10.3"
   }
 }
