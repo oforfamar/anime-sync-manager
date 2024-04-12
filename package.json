@@ -1,0 +1,40 @@
+{
+  "name": "anime-sync-manager",
+  "version": "1.0.0",
+  "description": "Project to help me organize my anime from one folder to another",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "NODE_ENV=development ts-node src/index.ts",
+    "start": "NODE_ENV=production ts-node src/index.ts",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oforfamar/anime-sync-manager.git"
+  },
+  "keywords": [
+    "anime",
+    "organizer"
+  ],
+  "author": "Tudor Roman",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/oforfamar/anime-sync-manager/issues"
+  },
+  "homepage": "https://github.com/oforfamar/anime-sync-manager#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "js-yaml": "^4.1.0",
+    "pino": "^8.20.0",
+    "pino-pretty": "^11.0.0",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.12.7",
+    "copyfiles": "^2.4.1",
+    "prettier": "^3.2.5",
+    "ts-prune": "^0.10.3"
+  }
+}
