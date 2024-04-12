@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "clean": "rimraf dist/",
-    "copy-files": "mkdir dist && cp -r ./src .env package*.json *.yaml tsconfig.json ./dist/",
+    "copy-files": "mkdir dist && cp -r ./src .env package.json *.yaml tsconfig.json ./dist/",
     "dev": "NODE_ENV=development ts-node src/index.ts",
     "pack": "npm run clean && npm run copy-files",
     "start": "NODE_ENV=production ts-node src/index.ts",
