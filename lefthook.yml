@@ -1,0 +1,25 @@
+# EXAMPLE USAGE:
+#
+#   Refer for explanation to following link:
+#   https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+#
+# pre-push:
+#   commands:
+#     packages-audit:
+#       tags: frontend security
+#       run: yarn audit
+#     gems-audit:
+#       tags: backend security
+#       run: bundle audit
+#
+pre-commit:
+  commands:
+    eslint:
+      glob: "*.{js,jsx,ts,tsx}"
+      run: npx eslint --fix {staged_files} && git add {staged_files}
+    prettier:
+      run: npm run format && git add {staged_files}
+    typecheck:
+      run: npm run typecheck
+    npm-audit:
+      run: npm audit --omit dev --audit-level=moderate
