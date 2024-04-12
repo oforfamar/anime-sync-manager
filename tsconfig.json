@@ -30,6 +30,6 @@
     "lib": ["es2022", "DOM"],
     "composite": true
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "vitest-setup.ts"],
   "include": ["src/**/*.ts"]
 }

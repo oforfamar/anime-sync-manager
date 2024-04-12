@@ -4,7 +4,7 @@ import { getFilesInFolder, moveFile } from "./helpers/fileHelpers.js";
 import { getDestinationFilename } from "./helpers/getDestinationFilename.js";
 import { logger } from "./helpers/logger.js";
 
-const main = async (): Promise<void> => {
+export const main = async (): Promise<void> => {
   const currentDate = new Date();
   const formattedDate = [
     currentDate.getDate(),
@@ -37,4 +37,8 @@ const main = async (): Promise<void> => {
   }
 };
 
-await main();
+/* c8 ignore start */
+if (process.env.NODE_ENV !== "test") {
+  await main();
+}
+/* c8 ignore end */
