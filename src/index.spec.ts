@@ -1,4 +1,12 @@
-import { describe, it, expect, vi, type Mock } from "vitest";
+import {
+  describe,
+  it,
+  expect,
+  vi,
+  type Mock,
+  beforeEach,
+  afterEach,
+} from "vitest";
 import { logger } from "./helpers/logger.js";
 import { getFilesInFolder, moveFile } from "./helpers/fileHelpers.js";
 import { getDestinationFilename } from "./helpers/getDestinationFilename.js";
@@ -23,13 +31,25 @@ vi.mock("./helpers/getDestinationFilename.js", () => ({
 }));
 
 describe("index.ts", () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+
+    const date = new Date(2024, 0, 1);
+    vi.setSystemTime(date);
+  });
+
+  afterEach(() => {
+    // restoring date after each test run
+    vi.useRealTimers();
+  });
+
   it("should do nothing if no files are present in the folder", async () => {
     (getFilesInFolder as Mock).mockResolvedValue([]);
 
     await main();
 
     expect(logger.info).toBeCalledWith(
-      `12-04-2024 - Starting the process on...`,
+      `01-01-2024 - Starting the process on...`,
     );
   });
 
@@ -45,7 +65,7 @@ describe("index.ts", () => {
     await main();
 
     expect(logger.info).toBeCalledWith(
-      `12-04-2024 - Starting the process on...`,
+      `01-01-2024 - Starting the process on...`,
     );
 
     expect(getDestinationFilename).toBeCalledWith("[Provider] file1.mp4");
@@ -80,7 +100,7 @@ describe("index.ts", () => {
     await main();
 
     expect(logger.info).toBeCalledWith(
-      `12-04-2024 - Starting the process on...`,
+      `01-01-2024 - Starting the process on...`,
     );
 
     expect(getDestinationFilename).toBeCalledWith("[Provider] file1.mp4");
